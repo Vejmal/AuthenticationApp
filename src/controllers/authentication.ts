@@ -29,7 +29,7 @@ export const login = async (req: express.Request, res: express.Response) => {
     user.authentication.sesstionToken = (authentication(salt, user._id.toString())).toString();
     await user.save();
 
-    res.cookie('TOMASZ-AUTH', user.authentication.sesstionToken, { domain: 'localhost',  path: '/'});
+    res.cookie('TOMASZ-AUTH', user.authentication.sesstionToken, { domain: 'localhost', path: '/' });
     return res.status(200).json(user).end();
   } catch (error) {
     console.log(`${dateNow}, An error occured during registration: ${error}`);
@@ -53,7 +53,7 @@ export const register = async (req: express.Request, res: express.Response) => {
     }
 
     const salt = random();
-    const user = await createUser({
+    const user: any = await createUser({
       email,
       username,
       authentication: {
