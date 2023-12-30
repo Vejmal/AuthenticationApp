@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 export const Register = (props) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [name, setName] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
-  }
+    try {
+      const response = await axios.post('http://localhost:8080/auth/register', {
+        username: name,
+        email: email,
+        password: pass
+      });
+
+      console.log(`Account has been successfully created. ${response.data}`)
+    } catch (error) {
+      console.error('An error occurred during the registration process.')
+    }
+  };
 
   return (
     <div className="auth-form-container">

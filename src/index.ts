@@ -19,10 +19,10 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 const server = http.createServer(app);
-const MONGO_URL = 'mongodbatlasslinktotheclaster'
+const MONGO_URL = 'mongodbatlasslinktotheclaster';
 
 server.listen(8080, () => {
-  console.log(`${dateNow}, Server running on https://localhost:8080/`)
+  console.log(`${dateNow}, Server running on http://localhost:8080/`)
 });
 
 mongoose.Promise = Promise;
