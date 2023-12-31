@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 export const Login = (props) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
+    try {
+      const response = await axios.post('http://localhost:8080/auth/login', {
+        email: email,
+        password: pass
+      });
+      console.log(`Logged in successfully. ${response.data}`);
+    } catch (error) {
+      console.error('An error occurred while logging in');
+    }
   }
 
   return (

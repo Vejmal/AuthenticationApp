@@ -14,7 +14,6 @@ export const Register = (props) => {
         email: email,
         password: pass
       });
-
       console.log(`Account has been successfully created. ${response.data}`)
     } catch (error) {
       console.error('An error occurred during the registration process.')
