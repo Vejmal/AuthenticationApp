@@ -31,11 +31,11 @@ export const isOwner = async (req: express.Request, res: express.Response, next:
   try {
     const { id } = req.params;
     const currentUserId = get(req, 'identity._id') as string;
-    if(!currentUserId) {
-    return res.sendStatus(403);
+    if (!currentUserId) {
+      return res.sendStatus(403);
     }
 
-    if(currentUserId.toString() !== id) {
+    if (currentUserId.toString() !== id) {
       return res.sendStatus(403);
     }
 
